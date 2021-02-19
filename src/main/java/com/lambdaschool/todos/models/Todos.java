@@ -17,7 +17,7 @@ public class Todos extends Auditable
     private String description;
 
     @Transient
-    private boolean completed = false;
+    public boolean completed = false;
 
 //    private long userid;
 
@@ -25,6 +25,7 @@ public class Todos extends Auditable
     @JoinColumn(name = "users",
             nullable = false)
     @JsonIgnoreProperties(value = "todos", allowSetters = true)
+
     private User user;
 
 

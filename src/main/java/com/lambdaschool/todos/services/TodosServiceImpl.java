@@ -15,12 +15,23 @@ public class TodosServiceImpl implements TodosService
     @Autowired
     private UserRepository userrepos;
 
-    @Transactional
+
     @Override
     public void markComplete(long todoid)
     {
-        userrepos.findById(todoid)
-                .orElseThrow(() -> new EntityNotFoundException("Todo id " + todoid + " not found!"));
+//        if (userrepos.findById(todoid)
+//                .isPresent())
+//        {
+//            ordersrepos.deleteById(id);
+//        } else
+//        {
+//            throw new EntityNotFoundException("Order " + id + " Not Found");
+//        }
+//    }
+//
+//    {
+//        userrepos.findById(todoid)
+//                .orElseThrow(() -> new EntityNotFoundException("Todo id " + todoid + " not found!"));
     }
 
 }
