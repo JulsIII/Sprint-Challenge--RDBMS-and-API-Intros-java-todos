@@ -21,16 +21,10 @@ public class Todos extends Auditable
 
     private long userid;
 
-//    @ManyToOne
-//    @JoinColumn(name = "todoid",
-//            nullable = false)
-//    @JsonIgnoreProperties(value = "todos", allowSetters = true)
-
-    @OneToMany(mappedBy = "todos",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    @JsonIgnoreProperties(value = "userid",
-            allowSetters = true)
+    @ManyToOne
+    @JoinColumn(name = "userid",
+            nullable = false)
+    @JsonIgnoreProperties(value = "todos", allowSetters = true)
     private User user;
 
 
@@ -69,13 +63,13 @@ public class Todos extends Auditable
         this.completed = completed;
     }
 
-    public long getUserid() {
-        return userid;
-    }
-
-    public void setUserid(long userid) {
-        this.userid = userid;
-    }
+//    public long getUserid() {
+//        return userid;
+//    }
+//
+//    public void setUserid(long userid) {
+//        this.userid = userid;
+//    }
 
     public User getUser() {
         return user;
