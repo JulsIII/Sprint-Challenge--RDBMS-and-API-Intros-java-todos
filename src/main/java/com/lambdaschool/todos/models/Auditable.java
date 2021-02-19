@@ -57,4 +57,25 @@ abstract class Auditable
     @LastModifiedDate
     @Temporal(TIMESTAMP)
     protected Date lastmodifieddate;
+
+    public String getCreatedBy()
+    {
+        return createdby;
+    }
+
+    public Date getCreatedDate()
+    {
+        return createddate;
+    }
+
+    public String getLastModifiedBy()
+    {
+        return lastmodifiedby;
+    }
+
+    public Date getLastModifiedDate()
+    {
+        return lastmodifieddate;
+    }
+
 }
