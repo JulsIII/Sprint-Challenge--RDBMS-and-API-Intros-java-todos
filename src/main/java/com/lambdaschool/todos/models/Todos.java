@@ -3,6 +3,8 @@ package com.lambdaschool.todos.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "todos")
@@ -19,21 +21,26 @@ public class Todos extends Auditable
 
     private long userid;
 
-    @ManyToOne
-    @JoinColumn(name = "todoid",
-            nullable = false)
-    @JsonIgnoreProperties(value = "todos", allowSetters = true)
+//    @ManyToOne
+//    @JoinColumn(name = "todoid",
+//            nullable = false)
+//    @JsonIgnoreProperties(value = "todos", allowSetters = true)
+
+    @OneToMany(mappedBy = "todos",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties(value = "userid",
+            allowSetters = true)
     private User user;
+
 
     public Todos()
     {
         ///jpa
     }
 
-    public Todos(String description, boolean completed, long userid, User user) {
+    public Todos(User user, String description) {
         this.description = description;
-        this.completed = completed;
-        this.userid = userid;
         this.user = user;
     }
 
