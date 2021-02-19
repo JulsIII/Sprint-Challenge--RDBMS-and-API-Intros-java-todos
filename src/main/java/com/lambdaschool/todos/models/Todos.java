@@ -19,10 +19,10 @@ public class Todos extends Auditable
     @Transient
     private boolean completed = false;
 
-    private long userid;
+//    private long userid;
 
     @ManyToOne
-    @JoinColumn(name = "userid",
+    @JoinColumn(name = "users",
             nullable = false)
     @JsonIgnoreProperties(value = "todos", allowSetters = true)
     private User user;
