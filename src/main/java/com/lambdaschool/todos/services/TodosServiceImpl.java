@@ -1,6 +1,7 @@
 package com.lambdaschool.todos.services;
 
 import com.lambdaschool.todos.models.Todos;
+import com.lambdaschool.todos.repository.TodoRepository;
 import com.lambdaschool.todos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,25 +14,20 @@ import javax.persistence.EntityNotFoundException;
 public class TodosServiceImpl implements TodosService
 {
     @Autowired
-    private UserRepository userrepos;
+    private TodoRepository todorepos;
 
 
     @Override
     public void markComplete(long todoid)
     {
-//        if (userrepos.findById(todoid)
-//                .isPresent())
-//        {
-//            ordersrepos.deleteById(id);
-//        } else
-//        {
-//            throw new EntityNotFoundException("Order " + id + " Not Found");
-//        }
-//    }
-//
-//    {
-//        userrepos.findById(todoid)
-//                .orElseThrow(() -> new EntityNotFoundException("Todo id " + todoid + " not found!"));
+        Todos currentTodo = todorepos.findById(todoid)
+                .orElseThrow(() -> new EntityNotFoundException("Todo " + todoid + " Not Found"));
+
+            currentTodo.setCompleted(true);
+
+            todorepos.save(currentTodo);
+
+
     }
 
 }

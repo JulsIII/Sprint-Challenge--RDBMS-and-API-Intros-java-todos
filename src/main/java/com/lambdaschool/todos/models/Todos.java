@@ -61,6 +61,7 @@ public class Todos extends Auditable
     }
 
     public void setCompleted(boolean completed) {
+        completed = true;
         this.completed = completed;
     }
 
